@@ -21,15 +21,28 @@ public class Game {
 		for (char c : wordBeingPlayed.toCharArray()) {
 			answer.add(c);
 		}
-		for (int i = 0; i < wordBeingPlayed.length(); i++) {
-			correctLetter.add(i, '_');
-		}
-		System.out.println(correctLetter.toString());
+		fillWithDash(wordBeingPlayed);
 		return wordBeingPlayed;
 	} 
 	
 	public String getWord() {
 		
 		return wordBeingPlayed;
+	}
+	
+	public void fillWithDash(String stringToReplace) {
+		for (int i = 0; i < stringToReplace.length(); i++)
+		{
+			correctLetter.add(i, '_');
+		}
+		System.out.println(correctLetter.toString());
+	}
+	
+	public boolean isWordPicked() { //implemented method for assignment 3 testing
+		boolean bol = false;
+		if(wordBeingPlayed.length() > 0) {
+			bol = false;
+		}
+		return bol;
 	}
 }
