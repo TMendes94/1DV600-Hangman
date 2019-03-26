@@ -12,7 +12,6 @@ public class Controller {
 	private static String word;
 	private static boolean gameStarted = false;
 	public static int success = 0;
-	private static boolean saveLife = false;
 
 	public void start(View.View v, Model.Game g) {
 		v.printStartMenu();
@@ -57,7 +56,7 @@ public class Controller {
 	}
 
 	public static void guess(View.View v, Model.Game g) {
-		
+
 		while (tries > 0) {
 
 			if (gameStarted == false) {
@@ -82,13 +81,12 @@ public class Controller {
 					success = 0;
 					g.correctLetter.clear();
 					Game.answer.clear();
-					game(v,g);
+					game(v, g);
 				}
 			}
-		
+
 			Scanner sc = new Scanner(System.in);
-			
-			
+
 			String input = sc.next();
 			char charac = input.charAt(0);
 			if (Character.isDigit(charac)) {
@@ -100,17 +98,17 @@ public class Controller {
 						v.printOnExit();
 						break;
 					}
-				}								
+				}
 			}
-			
+
 			if (!word.contains(input)) {
-				if(Character.isDigit(charac)) {
+				if (Character.isDigit(charac)) {
 					v.printOnWrongInput();
 					v.guess();
-				}
-				else  {
+				} else {
 					tries--;
-				v.printLives(tries);
+					v.printLives(tries);
+					v.printHangman(tries);
 				}
 				if (tries == 0) {
 					gameStarted = false;
